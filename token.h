@@ -7,25 +7,19 @@
 
 #ifndef token_h
 #define token_h
-#include "token_type.hpp"
+#include "token_type.h"
 #include <string>
 
+using namespace std;
 class Token{
     TokenType type;
-    String lexeme;
-    String literal;
+    string lexeme;
+    string literal;
     int line;
     
-    Token(TokenType type, String lexeme, String literal, int line){
-        this.type = type;
-        this.lexeme = lexeme;
-        this.literal = literal;
-        this.line = line;
-    }
-    
-    public String toString(){
-        return type + " " + lexeme + " " + literal;
-    }
+    public:
+    Token(TokenType type, string lexeme, string literal, int line);
+    string toString();
 };
 
 #endif /* token_h */

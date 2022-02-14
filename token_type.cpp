@@ -5,10 +5,6 @@
 //  Created by Sanath Salil on 02/02/22.
 //
 
-#ifndef token_type_h
-#define token_type_h
-
-
 typedef enum TokenType{
     //type keywords
     TOKEN_NULL,
@@ -94,6 +90,3 @@ typedef enum TokenType{
     TOKEN_ERROR,
     TOKEN_EOF
 } TokenType;
-
-
-#endif /* token_type_h */
