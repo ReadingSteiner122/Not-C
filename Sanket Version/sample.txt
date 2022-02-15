@@ -1,0 +1,12 @@
+int main(){
+int c = 5;
+int d = 7;
+int f;
+f+=c+d;
+int k= 6;
+int d[5];
+
+
+
+
+}
