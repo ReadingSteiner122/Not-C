@@ -97,7 +97,9 @@ typedef enum TokenType{
     TOKEN_ERROR,
     TOKEN_EOF,
     TOKEN_UNTIL,
-    TOKEN_CHAR
+    TOKEN_CHAR,
+    TOKEN_TERNARY_1,
+    TOKEN_TERNARY_2
 } TokenType;
 
 

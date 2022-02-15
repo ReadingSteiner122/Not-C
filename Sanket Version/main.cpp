@@ -404,6 +404,12 @@ class Lexer{
                         case '!':
                             tokens.push_back(Token(TOKEN_NOT, s, line_no));
                             break;
+                        case '?':
+                            tokens.push_back(Token(TOKEN_TERNARY_1, s, line_no));
+                            break;
+                        case ':':
+                            tokens.push_back(Token(TOKEN_TERNARY_2, s, line_no));
+                            break;
                         default:
                             break;
                     }
