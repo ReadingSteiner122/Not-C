@@ -3,9 +3,11 @@ int c = 5;
 int d = 7;
 int f;
 f+=c+d;
-int k= 6;
+int k+/6;
 int d[5];
-
+char ch;
+float x = 5.5;
+string str = "penis\"";
 
 
 
