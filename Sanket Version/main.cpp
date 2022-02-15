@@ -442,6 +442,7 @@ class Lexer{
                 else if (validIdentifier(sub) == false
                         && isPunctuator(str[right - 1]) == false && (int)sub[0]!=0)
                         {
+                            tokens.push_back(Token(TOKEN_ERROR, sub, line_no));
                             cout<<"Line no "<< line_no<< ", "<< sub <<" IS NOT A VALID IDENTIFIER\n";
                         }
 
