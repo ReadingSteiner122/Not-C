@@ -191,6 +191,9 @@ class Lexer{
         int left = 0, right = 0;
         int len = strlen(str);
         while (right <= len && left <= right) {
+            if(str[right] == '\\' && str[right+1] == '\\'){
+                break;
+            }
             if(str[right] == '\"'){
                 int l1 = right;
                 right++;
@@ -249,7 +252,9 @@ class Lexer{
                 else if (isOperator(str[right]) == true)
                 {
                     if(right<len && isOperator(str[right+1])){
-                        string s(2, str[right] + str[right+1]);
+                        string s1(1, str[right]);
+                        string s2(1, str[right+1]);
+                        string s = s1 + s2;
                         int flag = 1;
                     switch(str[right]){
                         case '+':
@@ -258,6 +263,7 @@ class Lexer{
                             else if(str[right+1] == '+')
                                 tokens.push_back(Token(TOKEN_PLUS_PLUS, s, line_no));
                             else{
+                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
@@ -268,6 +274,7 @@ class Lexer{
                             else if(str[right+1] == '-')
                                 tokens.push_back(Token(TOKEN_MINUS_MINUS, s, line_no));
                             else{
+                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
@@ -276,6 +283,7 @@ class Lexer{
                             if(str[right+1] == '=')
                                 tokens.push_back(Token(TOKEN_MULTIPLY_EQUAL, s, line_no));
                             else{
+                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
@@ -284,6 +292,7 @@ class Lexer{
                             if(str[right+1] == '=')
                                 tokens.push_back(Token(TOKEN_DIVIDE_EQUAL, s, line_no));
                             else{
+                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
@@ -292,6 +301,7 @@ class Lexer{
                             if(str[right+1] == '=')
                                 tokens.push_back(Token(TOKEN_GREATER_EQUAL, s, line_no));
                             else{
+                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
@@ -300,6 +310,7 @@ class Lexer{
                             if(str[right+1] == '=')
                                 tokens.push_back(Token(TOKEN_LESS_EQUAL, s, line_no));
                             else{
+                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
@@ -308,6 +319,7 @@ class Lexer{
                             if(str[right+1] == '=')
                                 tokens.push_back(Token(TOKEN_EQUAL_EQUAL, s, line_no));
                             else{
+                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
@@ -316,6 +328,7 @@ class Lexer{
                             if(str[right+1] == '|')
                                 tokens.push_back(Token(TOKEN_OR_OR, s, line_no));
                             else{
+                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
@@ -324,6 +337,7 @@ class Lexer{
                             if(str[right+1] == '&')
                                 tokens.push_back(Token(TOKEN_AND_AND, s, line_no));
                             else{
+                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
@@ -332,6 +346,7 @@ class Lexer{
                             if(str[right+1] == '=')
                                 tokens.push_back(Token(TOKEN_MODULO_EQUAL, s, line_no));
                             else{
+                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
@@ -340,6 +355,7 @@ class Lexer{
                             if(str[right+1] == '=')
                                 tokens.push_back(Token(TOKEN_NOT_EQUAL, s, line_no));
                             else{
+                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }

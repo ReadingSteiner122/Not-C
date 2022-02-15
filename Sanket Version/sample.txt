@@ -1,6 +1,7 @@
 int main(){
 int c = 5;
-int d = 7;
+int d = 7; \\gg
+\\skip line
 int f;
 f+=c+d;
 int k+/6;
