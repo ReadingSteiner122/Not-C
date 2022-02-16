@@ -9,6 +9,8 @@ int d[5];
 char ch;
 float x = 5.5;
 string str = "penis\"";
+\* destructor penis
+penis lord *\ int a = 8;
 
 
 

@@ -15,6 +15,7 @@ using namespace std;
 class Lexer{
     int line_no;
     list<Token> tokens;
+    int multi_com;
     bool isPunctuator(char ch)					//check if the given character is a punctuator or not
     {
         if (ch == ' ' || ch == '+' || ch == '-' || ch == '*' ||
@@ -185,12 +186,28 @@ class Lexer{
     public:
     Lexer(){
         line_no = 1;
+        multi_com = 0;
     }
     void parse(char* str)						//parse the expression
     {
         int left = 0, right = 0;
         int len = strlen(str);
         while (right <= len && left <= right) {
+            if((str[right] == '\\' && str[right+1] == '*') || multi_com == 1){ //multiline comments
+                multi_com = 1;
+                while(multi_com == 1){
+                    if(str[right] == '*' && str[right+1] == '\\'){
+                        multi_com = 0;
+                    }
+                    if(right > len)
+                        break;
+                    right++;
+                }
+                left = right + 1;
+                right = right + 1;
+                if(right > len)
+                    break;
+            }
             if(str[right] == '\\' && str[right+1] == '\\'){
                 break;
             }

@@ -87,6 +87,6 @@ typedef enum TokenType{
     TOKEN_EOF, //62
     TOKEN_UNTIL, //63
     TOKEN_CHAR, //64
-    TOKEN_TERNARY_1,
-    TOKEN_TERNARY_2 //65
+    TOKEN_TERNARY_1, //65
+    TOKEN_TERNARY_2 //66
 } TokenType;
