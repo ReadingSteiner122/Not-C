@@ -8,6 +8,7 @@
 #include <list>
 #include "token_type.h"
 #include "token.h"
+#include <regex>
 
 using namespace std;
 
@@ -22,7 +23,8 @@ class Lexer{
             ch == '/' || ch == ',' || ch == ';' || ch == '>' ||
             ch == '<' || ch == '=' || ch == '(' || ch == ')' ||
             ch == '[' || ch == ']' || ch == '{' || ch == '}' ||
-            ch == '&' || ch == '|')
+            ch == '&' || ch == '|' || ch == '!' || ch == '?' ||
+            ch == ':')
             {
                 return true;
             }
@@ -31,30 +33,12 @@ class Lexer{
 
     bool validIdentifier(char* str)						//check if the given identifier is valid or not
     {
-        if (str[0] == '0' || str[0] == '1' || str[0] == '2' ||
-            str[0] == '3' || str[0] == '4' || str[0] == '5' ||
-            str[0] == '6' || str[0] == '7' || str[0] == '8' ||
-            str[0] == '9' || isPunctuator(str[0]) == true)
-            {
-                return false;
-            }									//if first character of string is a digit or a special character, identifier is not valid
-        int i,len = strlen(str);
-
-        if (len == 1)
-        {
+        regex identif("[a-zA-Z]+[a-zA-Z0-9_]*");
+        if(regex_match(str, identif))
             return true;
-        }										//if length is one, validation is already completed, hence return true
         else
-        {
-        for (i = 1 ; i < len ; i++)						//identifier cannot contain special characters
-        {
-            if (isPunctuator(str[i]) == true)
-            {
-                return false;
-            }
-        }
-        }
-        return true;
+            return false;
+
     }
 
     bool isOperator(char ch)							//check if the given character is an operator or not
@@ -64,6 +48,9 @@ class Lexer{
             ch == '=' || ch == '|' || ch == '&' ||
             ch == '?' || ch == '%' || ch == '!' || ch == ':')
         {
+            //if(ch=='!')
+             //   cout<<"NOT FOUND"<<endl;
+            //cout<<"FOUND OPERATOR "<<ch<<endl;
         return true;
         }
         return false;
@@ -193,10 +180,10 @@ class Lexer{
         int left = 0, right = 0;
         int len = strlen(str);
         while (right <= len && left <= right) {
-            if((str[right] == '\\' && str[right+1] == '*') || multi_com == 1){ //multiline comments
+            if((str[right] == '/' && str[right+1] == '*') || multi_com == 1){ //multiline comments
                 multi_com = 1;
                 while(multi_com == 1){
-                    if(str[right] == '*' && str[right+1] == '\\'){
+                    if(str[right] == '*' && str[right+1] == '/'){
                         multi_com = 0;
                     }
                     if(right > len)
@@ -208,7 +195,7 @@ class Lexer{
                 if(right > len)
                     break;
             }
-            if(str[right] == '\\' && str[right+1] == '\\'){
+            if(str[right] == '/' && str[right+1] == '/'){
                 break;
             }
             if(str[right] == '\"'){
@@ -272,167 +259,210 @@ class Lexer{
                         string s1(1, str[right]);
                         string s2(1, str[right+1]);
                         string s = s1 + s2;
-                        int flag = 1;
+                        int flag = 0;
                     switch(str[right]){
                         case '+':
-                            if(str[right+1] == '=')
+                            if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_PLUS_EQUAL, s, line_no));
-                            else if(str[right+1] == '+')
+                                right++;
+                                flag = 1;
+                            }
+                            else if(str[right+1] == '+'){
                                 tokens.push_back(Token(TOKEN_PLUS_PLUS, s, line_no));
-                            else{
+                                right++;
+                                flag = 1;
+                            }
+                            /*else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
-                            }
+                            }*/
                             break;
                         case '-':
-                            if(str[right+1] == '=')
+                            if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_MINUS_EQUAL, s, line_no));
-                            else if(str[right+1] == '-')
+                                right++;
+                                flag = 1;
+                            }
+                            else if(str[right+1] == '-'){
                                 tokens.push_back(Token(TOKEN_MINUS_MINUS, s, line_no));
-                            else{
-                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));
+                                right++;
+                                flag = 1;
+                            }
+                            /*else{
+                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));                         
                                 //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
-                            }
+                            }*/
                             break;
                         case '*':
-                            if(str[right+1] == '=')
+                            if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_MULTIPLY_EQUAL, s, line_no));
-                            else{
+                                right++;
+                                flag = 1;
+                            }
+                            /*else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
-                            }
+                            }*/
                             break;
                         case '/':
-                            if(str[right+1] == '=')
+                            if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_DIVIDE_EQUAL, s, line_no));
-                            else{
+                                right++;
+                                flag = 1;
+                            }
+                            /*else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
-                            }
+                            }*/
                             break;
                         case '>':
-                            if(str[right+1] == '=')
+                            if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_GREATER_EQUAL, s, line_no));
-                            else{
+                                right++;
+                                flag = 1;
+                            }
+                            /*else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
-                            }
+                            }*/
                             break;
                         case '<':
-                            if(str[right+1] == '=')
+                            if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_LESS_EQUAL, s, line_no));
-                            else{
+                                right++;
+                                flag = 1;
+                            }
+                            /*else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
-                            }
+                            }*/
                             break;
                         case '=':
-                            if(str[right+1] == '=')
+                            if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_EQUAL_EQUAL, s, line_no));
-                            else{
+                                right++;
+                                flag = 1;
+                            }
+                            /*else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
-                            }
+                            }*/
                             break;
                         case '|':
-                            if(str[right+1] == '|')
+                            if(str[right+1] == '|'){
                                 tokens.push_back(Token(TOKEN_OR_OR, s, line_no));
-                            else{
+                                right++;
+                                flag = 1;
+                            }
+                            /*else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
-                            }
+                            }*/
                             break;
                         case '&':
-                            if(str[right+1] == '&')
+                            if(str[right+1] == '&'){
                                 tokens.push_back(Token(TOKEN_AND_AND, s, line_no));
-                            else{
+                                right++;
+                                flag = 1;
+                            }
+                            /*else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
-                            }
+                            }*/
                             break;
-                        case '%':
-                            if(str[right+1] == '=')
+                        case '%': 
+                            if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_MODULO_EQUAL, s, line_no));
-                            else{
+                                right++;
+                                flag =1;
+                            }
+                            /*else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
-                            }
+                            }*/
                             break;
                         case '!':
-                            if(str[right+1] == '=')
+                            //cout<<"NOT EQUALS"<<endl;
+                            if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_NOT_EQUAL, s, line_no));
-                            else{
+                                right++;
+                                flag = 1;
+                            }
+                            /*else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
-                            }
+                            }*/
                             break;
                         default:
                             //cout<<"INVALID TOKEN\n";
                             break;
                         }
-                        if(!flag)
+                        //if(!flag)
                             //std::cout<<"Line no "<< line_no<< ", "<< str[right] << str[right+1]<<" IS AN OPERATOR\n";
-                        right++;
-                        goto here;
+                        if(flag)
+                            right++;
+                        //goto here;
                     }
-                    string s(1, str[right]);
-                    switch(str[right]){
-                        case '+':
-                            tokens.push_back(Token(TOKEN_PLUS, s, line_no));
-                            break;
-                        case '-':
-                            tokens.push_back(Token(TOKEN_MINUS, s, line_no));
-                            break;
-                        case '*':
-                            tokens.push_back(Token(TOKEN_MULTIPLY, s, line_no));
-                            break;
-                        case '/':
-                            tokens.push_back(Token(TOKEN_DIVIDE, s, line_no));
-                            break;
-                        case '>':
-                            tokens.push_back(Token(TOKEN_GREATER, s, line_no));
-                            break;
-                        case '<':
-                            tokens.push_back(Token(TOKEN_LESS, s, line_no));
-                            break;
-                        case '=':
-                            tokens.push_back(Token(TOKEN_EQUAL, s, line_no));
-                            break;
-                        case '|':
-                            tokens.push_back(Token(TOKEN_OR, s, line_no));
-                            break;
-                        case '&':
-                            tokens.push_back(Token(TOKEN_AND, s, line_no));
-                            break;
-                        case '%':
-                            tokens.push_back(Token(TOKEN_MODULO, s, line_no));
-                            break;
-                        case '!':
-                            tokens.push_back(Token(TOKEN_NOT, s, line_no));
-                            break;
-                        case '?':
-                            tokens.push_back(Token(TOKEN_TERNARY_1, s, line_no));
-                            break;
-                        case ':':
-                            tokens.push_back(Token(TOKEN_TERNARY_2, s, line_no));
-                            break;
-                        default:
-                            break;
+                    if(isOperator(str[right])){
+                        string s(1, str[right]);
+                        switch(str[right]){
+                            case '+':
+                                tokens.push_back(Token(TOKEN_PLUS, s, line_no));
+                                break;
+                            case '-':
+                                tokens.push_back(Token(TOKEN_MINUS, s, line_no));
+                                break;
+                            case '*':
+                                tokens.push_back(Token(TOKEN_MULTIPLY, s, line_no));
+                                break;
+                            case '/':
+                                tokens.push_back(Token(TOKEN_DIVIDE, s, line_no));
+                                break;
+                            case '>':
+                                tokens.push_back(Token(TOKEN_GREATER, s, line_no));
+                                break;
+                            case '<':
+                                tokens.push_back(Token(TOKEN_LESS, s, line_no));
+                                break;
+                            case '=':
+                                tokens.push_back(Token(TOKEN_EQUAL, s, line_no));
+                                break;
+                            case '|':
+                                tokens.push_back(Token(TOKEN_OR, s, line_no));
+                                break;
+                            case '&':
+                                tokens.push_back(Token(TOKEN_AND, s, line_no));
+                                break;
+                            case '%':
+                                tokens.push_back(Token(TOKEN_MODULO, s, line_no));
+                                break;
+                            case '!':
+                                tokens.push_back(Token(TOKEN_NOT, s, line_no));
+                                //cout<<"NOT"<<endl;
+                                break;
+                            case '?':
+                                tokens.push_back(Token(TOKEN_TERNARY_1, s, line_no));
+                                break;
+                            case ':':
+                                tokens.push_back(Token(TOKEN_TERNARY_2, s, line_no));
+                                break;
+                            default:
+                                break;
+                        }
                     }
                     //std::cout<<"Line no "<< line_no<< ", "<< str[right] <<" IS AN OPERATOR\n";
                 }
-                here:
                 right++;
                 left = right;
                 } else if (isPunctuator(str[right]) == true && left != right
@@ -478,7 +508,7 @@ class Lexer{
 
 int main()
 {
-    ifstream infile("sample.txt");
+    ifstream infile("edgecases.txt");
     Lexer lex;
     while (infile.good()){
         string sLine;
@@ -489,5 +519,6 @@ int main()
         lex.parse(line);
     }
     lex.printList();
+    cout<<"ENDLINE"<<endl;
     return 0;
 }

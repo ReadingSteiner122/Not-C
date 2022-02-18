@@ -22,7 +22,7 @@ string Token::toString(){
 
 void Token::printToken(){
     if(type == TOKEN_ERROR)
-        std::cout<<"Token - 420, String - "<<lexeme<<", line no - "<<line<<"\n";
+        std::cout<<"Token - ERROR, String - "<<lexeme<<", line no - "<<line<<"\n";
     else
         std::cout<<"Token - "<<type<<", String  - "<<lexeme<<", line no - "<<line<<"\n";
 }
