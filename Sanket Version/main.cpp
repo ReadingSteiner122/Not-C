@@ -141,7 +141,7 @@ class Lexer{
                     }
             }
             tokens.push_back(Token(TOKEN_INT_LITERAL, str, line_no));
-            cout<<"Line no "<< line_no<< ", "<< str <<" IS A INTEGER LITERAL\n";
+            //cout<<"Line no "<< line_no<< ", "<< str <<" IS A INTEGER LITERAL\n";
             return true;
         }
         else{
@@ -164,7 +164,7 @@ class Lexer{
                     return false;
             }
             tokens.push_back(Token(TOKEN_FLOAT_LITERAL, str, line_no));
-            cout<<"Line no "<< line_no<< ", "<< str <<" IS A FLOAT LITERAL\n";
+            //cout<<"Line no "<< line_no<< ", "<< str <<" IS A FLOAT LITERAL\n";
             return true;
         }
     }
@@ -234,12 +234,12 @@ class Lexer{
                 else if(punct==','){
                     string s(1, punct);
                     tokens.push_back(Token(TOKEN_COMMA, s, line_no));
-                    std::cout<<"Line no "<< line_no<< ", "<< str[right] <<" IS AN DELIMITER OR SEPARATOR\n";
+                    //std::cout<<"Line no "<< line_no<< ", "<< str[right] <<" IS AN DELIMITER OR SEPARATOR\n";
                     }
                 else if(punct==';'){
                     string s(1, punct);
                     tokens.push_back(Token(TOKEN_SEMICOLON, s, line_no));
-                    std::cout<<"Line no "<< line_no<< ", "<< str[right] <<" IS AN DELIMITER OR SEPARATOR\n";
+                    //std::cout<<"Line no "<< line_no<< ", "<< str[right] <<" IS AN DELIMITER OR SEPARATOR\n";
                     }
                 else if(punct=='(' || punct==')'){
                     string s(1, punct);
@@ -247,7 +247,7 @@ class Lexer{
                         tokens.push_back(Token(TOKEN_LEFT_BRACE, s, line_no));
                     else
                         tokens.push_back(Token(TOKEN_RIGHT_BRACE, s, line_no));
-                    std::cout<<"Line no "<< line_no<< ", "<< str[right] <<" IS AN DELIMITER OR SEPARATOR\n";
+                    //std::cout<<"Line no "<< line_no<< ", "<< str[right] <<" IS AN DELIMITER OR SEPARATOR\n";
                     }
                 else if(punct=='[' || punct==']'){
                     string s(1, punct);
@@ -255,7 +255,7 @@ class Lexer{
                         tokens.push_back(Token(TOKEN_LEFT_SQUARE_BRACKET, s, line_no));
                     else
                         tokens.push_back(Token(TOKEN_RIGHT_SQUARE_BRACKET, s, line_no));
-                    std::cout<<"Line no "<< line_no<< ", "<< str[right] <<" IS AN DELIMITER OR SEPARATOR\n";
+                    //std::cout<<"Line no "<< line_no<< ", "<< str[right] <<" IS AN DELIMITER OR SEPARATOR\n";
                     }
                 else if(punct=='{' || punct=='}'){
                     string s(1, punct);
@@ -263,7 +263,7 @@ class Lexer{
                         tokens.push_back(Token(TOKEN_LEFT_PAREN, s, line_no));
                     else
                         tokens.push_back(Token(TOKEN_RIGHT_PAREN, s, line_no));
-                    std::cout<<"Line no "<< line_no<< ", "<< str[right] <<" IS AN DELIMITER OR SEPARATOR\n";
+                    //std::cout<<"Line no "<< line_no<< ", "<< str[right] <<" IS AN DELIMITER OR SEPARATOR\n";
                     }
 
                 else if (isOperator(str[right]) == true)
@@ -281,7 +281,7 @@ class Lexer{
                                 tokens.push_back(Token(TOKEN_PLUS_PLUS, s, line_no));
                             else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
-                                std::cout<<"INVALID TOKEN\n";
+                                //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
                             break;
@@ -292,7 +292,7 @@ class Lexer{
                                 tokens.push_back(Token(TOKEN_MINUS_MINUS, s, line_no));
                             else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
-                                std::cout<<"INVALID TOKEN\n";
+                                //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
                             break;
@@ -301,7 +301,7 @@ class Lexer{
                                 tokens.push_back(Token(TOKEN_MULTIPLY_EQUAL, s, line_no));
                             else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
-                                std::cout<<"INVALID TOKEN\n";
+                                //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
                             break;
@@ -310,7 +310,7 @@ class Lexer{
                                 tokens.push_back(Token(TOKEN_DIVIDE_EQUAL, s, line_no));
                             else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
-                                std::cout<<"INVALID TOKEN\n";
+                                //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
                             break;
@@ -319,7 +319,7 @@ class Lexer{
                                 tokens.push_back(Token(TOKEN_GREATER_EQUAL, s, line_no));
                             else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
-                                std::cout<<"INVALID TOKEN\n";
+                                //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
                             break;
@@ -328,7 +328,7 @@ class Lexer{
                                 tokens.push_back(Token(TOKEN_LESS_EQUAL, s, line_no));
                             else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
-                                std::cout<<"INVALID TOKEN\n";
+                                //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
                             break;
@@ -337,7 +337,7 @@ class Lexer{
                                 tokens.push_back(Token(TOKEN_EQUAL_EQUAL, s, line_no));
                             else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
-                                std::cout<<"INVALID TOKEN\n";
+                                //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
                             break;
@@ -346,7 +346,7 @@ class Lexer{
                                 tokens.push_back(Token(TOKEN_OR_OR, s, line_no));
                             else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
-                                std::cout<<"INVALID TOKEN\n";
+                                //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
                             break;
@@ -355,7 +355,7 @@ class Lexer{
                                 tokens.push_back(Token(TOKEN_AND_AND, s, line_no));
                             else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
-                                std::cout<<"INVALID TOKEN\n";
+                                //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
                             break;
@@ -364,7 +364,7 @@ class Lexer{
                                 tokens.push_back(Token(TOKEN_MODULO_EQUAL, s, line_no));
                             else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
-                                std::cout<<"INVALID TOKEN\n";
+                                //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
                             break;
@@ -373,16 +373,16 @@ class Lexer{
                                 tokens.push_back(Token(TOKEN_NOT_EQUAL, s, line_no));
                             else{
                                 tokens.push_back(Token(TOKEN_ERROR, s, line_no));
-                                std::cout<<"INVALID TOKEN\n";
+                                //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }
                             break;
                         default:
-                            cout<<"INVALID TOKEN\n";
+                            //cout<<"INVALID TOKEN\n";
                             break;
                         }
                         if(!flag)
-                            std::cout<<"Line no "<< line_no<< ", "<< str[right] << str[right+1]<<" IS AN OPERATOR\n";
+                            //std::cout<<"Line no "<< line_no<< ", "<< str[right] << str[right+1]<<" IS AN OPERATOR\n";
                         right++;
                         goto here;
                     }
@@ -430,7 +430,7 @@ class Lexer{
                         default:
                             break;
                     }
-                    std::cout<<"Line no "<< line_no<< ", "<< str[right] <<" IS AN OPERATOR\n";
+                    //std::cout<<"Line no "<< line_no<< ", "<< str[right] <<" IS AN OPERATOR\n";
                 }
                 here:
                 right++;
@@ -443,7 +443,7 @@ class Lexer{
                 if (isKeyword(sub) == true)
                             {
                                 //tokens.push_back(Token(TOKEN_KEYWORD, sub, line_no));
-                                cout<<"Line no "<< line_no<< ", "<< sub <<" IS A KEYWORD\n";
+                                //cout<<"Line no "<< line_no<< ", "<< sub <<" IS A KEYWORD\n";
                             }
                 else if (isNumber(sub) == true)
                             {
@@ -453,14 +453,14 @@ class Lexer{
                         && isPunctuator(str[right - 1]) == false && (int)sub[0]!=0)
                         {
                             tokens.push_back(Token(TOKEN_IDENTIFIER, sub, line_no));
-                            cout<<"Line no "<< line_no<< ", "<< sub <<" IS A VALID IDENTIFIER\n";
+                            //cout<<"Line no "<< line_no<< ", "<< sub <<" IS A VALID IDENTIFIER\n";
 
                         }
                 else if (validIdentifier(sub) == false
                         && isPunctuator(str[right - 1]) == false && (int)sub[0]!=0)
                         {
                             tokens.push_back(Token(TOKEN_ERROR, sub, line_no));
-                            cout<<"Line no "<< line_no<< ", "<< sub <<" IS NOT A VALID IDENTIFIER\n";
+                            //cout<<"Line no "<< line_no<< ", "<< sub <<" IS NOT A VALID IDENTIFIER\n";
                         }
 
                 left = right;

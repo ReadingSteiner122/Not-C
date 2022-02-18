@@ -21,6 +21,9 @@ string Token::toString(){
 }
 
 void Token::printToken(){
-    std::cout<<"Token - "<<type<<", String  - "<<lexeme<<", line no - "<<line<<"\n";
+    if(type == TOKEN_ERROR)
+        std::cout<<"Token - 420, String - "<<lexeme<<", line no - "<<line<<"\n";
+    else
+        std::cout<<"Token - "<<type<<", String  - "<<lexeme<<", line no - "<<line<<"\n";
 }
 
