@@ -1,6 +1,7 @@
 int main(){
 int c = 5;
 int d = 7; \\gg
+++ \\plusplus
 \\skip line
 int f;
 f+=c+d;
@@ -11,6 +12,7 @@ float x = 5.5;
 string str = "penis\"";
 \* destructor penis
 penis lord *\ int a = 8;
+
 
 
 

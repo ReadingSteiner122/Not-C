@@ -255,21 +255,21 @@ class Lexer{
 
                 else if (isOperator(str[right]) == true)
                 {
+                    int flag = 0;
                     if(right<len && isOperator(str[right+1])){
                         string s1(1, str[right]);
                         string s2(1, str[right+1]);
                         string s = s1 + s2;
-                        int flag = 0;
                     switch(str[right]){
                         case '+':
                             if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_PLUS_EQUAL, s, line_no));
-                                right++;
+                                //right++;
                                 flag = 1;
                             }
                             else if(str[right+1] == '+'){
                                 tokens.push_back(Token(TOKEN_PLUS_PLUS, s, line_no));
-                                right++;
+                                //right++;
                                 flag = 1;
                             }
                             /*else{
@@ -281,12 +281,12 @@ class Lexer{
                         case '-':
                             if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_MINUS_EQUAL, s, line_no));
-                                right++;
+                                //right++;
                                 flag = 1;
                             }
                             else if(str[right+1] == '-'){
                                 tokens.push_back(Token(TOKEN_MINUS_MINUS, s, line_no));
-                                right++;
+                                //right++;
                                 flag = 1;
                             }
                             /*else{
@@ -298,7 +298,7 @@ class Lexer{
                         case '*':
                             if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_MULTIPLY_EQUAL, s, line_no));
-                                right++;
+                                //right++;
                                 flag = 1;
                             }
                             /*else{
@@ -310,7 +310,7 @@ class Lexer{
                         case '/':
                             if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_DIVIDE_EQUAL, s, line_no));
-                                right++;
+                                //right++;
                                 flag = 1;
                             }
                             /*else{
@@ -322,7 +322,7 @@ class Lexer{
                         case '>':
                             if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_GREATER_EQUAL, s, line_no));
-                                right++;
+                                //right++;
                                 flag = 1;
                             }
                             /*else{
@@ -334,7 +334,7 @@ class Lexer{
                         case '<':
                             if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_LESS_EQUAL, s, line_no));
-                                right++;
+                                //right++;
                                 flag = 1;
                             }
                             /*else{
@@ -346,7 +346,7 @@ class Lexer{
                         case '=':
                             if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_EQUAL_EQUAL, s, line_no));
-                                right++;
+                                //right++;
                                 flag = 1;
                             }
                             /*else{
@@ -358,7 +358,7 @@ class Lexer{
                         case '|':
                             if(str[right+1] == '|'){
                                 tokens.push_back(Token(TOKEN_OR_OR, s, line_no));
-                                right++;
+                                //right++;
                                 flag = 1;
                             }
                             /*else{
@@ -370,7 +370,7 @@ class Lexer{
                         case '&':
                             if(str[right+1] == '&'){
                                 tokens.push_back(Token(TOKEN_AND_AND, s, line_no));
-                                right++;
+                                //right++;
                                 flag = 1;
                             }
                             /*else{
@@ -382,7 +382,7 @@ class Lexer{
                         case '%': 
                             if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_MODULO_EQUAL, s, line_no));
-                                right++;
+                                //right++;
                                 flag =1;
                             }
                             /*else{
@@ -395,7 +395,7 @@ class Lexer{
                             //cout<<"NOT EQUALS"<<endl;
                             if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_NOT_EQUAL, s, line_no));
-                                right++;
+                                //right++;
                                 flag = 1;
                             }
                             /*else{
@@ -414,7 +414,7 @@ class Lexer{
                             right++;
                         //goto here;
                     }
-                    if(isOperator(str[right])){
+                    if(isOperator(str[right]) && flag!=1){
                         string s(1, str[right]);
                         switch(str[right]){
                             case '+':
@@ -460,12 +460,16 @@ class Lexer{
                             default:
                                 break;
                         }
+                        //right++;
                     }
                     //std::cout<<"Line no "<< line_no<< ", "<< str[right] <<" IS AN OPERATOR\n";
                 }
+                //if(isOperator(str[right]))
                 right++;
                 left = right;
-                } else if (isPunctuator(str[right]) == true && left != right
+                cout<<str[right]<<endl;
+                } 
+                else if (isPunctuator(str[right]) == true && left != right
                     || (right == len && left != right)) 			//check if parsed substring is a keyword or identifier or number
                 {
                 char* sub = subString(str, left, right - 1);   //extract substring
@@ -508,7 +512,7 @@ class Lexer{
 
 int main()
 {
-    ifstream infile("edgecases.txt");
+    ifstream infile("sample.txt");
     Lexer lex;
     while (infile.good()){
         string sLine;
