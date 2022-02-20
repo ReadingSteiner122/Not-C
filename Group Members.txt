@@ -1,0 +1,13 @@
+Group 5
+
+2018B4A70713H	Aswath Vinayak K
+2018B4A70812H	Sanath Salil
+2019A7PS0147H	Sanket Bhatt
+2019A7PS0132H	Vaibhav Jha
+
+Language Name - "~C"
+Lexer Implemented in CPP (C++)
+
+Steps to Compile
+Please compile all 3 .cpp files and link with both .h Header files.
+Please run main.cpp and use a text file either present in the folder of main.cpp or provide the path for the same in the input

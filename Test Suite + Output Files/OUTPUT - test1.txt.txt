@@ -1,0 +1,25 @@
+Please enter the name of the text file with the code you wish parsed:
+test1.txt
+
+
+OUTPUT
+
+
+Token - 2, String  - int, line no - 1
+Token - 20, String  - main, line no - 1
+Token - 54, String  - (, line no - 1
+Token - 55, String  - ), line no - 1
+Token - 50, String  - {, line no - 1
+Token - 20, String  - printf, line no - 3
+Token - 54, String  - (, line no - 3
+Token - 23, String  - "Hello, World!", line no - 3
+Token - 55, String  - ), line no - 3
+Token - 58, String  - ;, line no - 3
+Token - 8, String  - return, line no - 4
+Token - 21, String  - 0, line no - 4
+Token - 58, String  - ;, line no - 4
+Token - 51, String  - }, line no - 5
+END OF PROGRAM
+
+Process returned 0 (0x0)   execution time : 3.176 s
+Press any key to continue.

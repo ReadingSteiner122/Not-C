@@ -1,0 +1,80 @@
+Please enter the name of the text file with the code you wish parsed:
+sample.txt
+
+
+OUTPUT
+
+
+Token - 2, String  - int, line no - 1
+Token - 20, String  - main, line no - 1
+Token - 54, String  - (, line no - 1
+Token - 55, String  - ), line no - 1
+Token - 50, String  - {, line no - 1
+Token - 2, String  - int, line no - 2
+Token - 20, String  - c, line no - 2
+Token - 44, String  - =, line no - 2
+Token - 21, String  - 5, line no - 2
+Token - 58, String  - ;, line no - 2
+Token - 2, String  - int, line no - 3
+Token - 20, String  - d, line no - 3
+Token - 44, String  - =, line no - 3
+Token - 21, String  - 7, line no - 3
+Token - 58, String  - ;, line no - 3
+Token - 2, String  - int, line no - 5
+Token - 20, String  - f, line no - 5
+Token - 58, String  - ;, line no - 5
+Token - 20, String  - f, line no - 6
+Token - 28, String  - +=, line no - 6
+Token - 20, String  - c, line no - 6
+Token - 26, String  - +, line no - 6
+Token - 20, String  - d, line no - 6
+Token - 58, String  - ;, line no - 6
+Token - 2, String  - int, line no - 7
+Token - 20, String  - k, line no - 7
+Token - 26, String  - +, line no - 7
+Token - 34, String  - /, line no - 7
+Token - 21, String  - 6, line no - 7
+Token - 58, String  - ;, line no - 7
+Token - 4, String  - string, line no - 8
+Token - 20, String  - stringly, line no - 8
+Token - 44, String  - =, line no - 8
+Token - ERROR, String - "Hi. Empty String, line no - 8
+Token - 4, String  - string, line no - 10
+Token - 20, String  - correct, line no - 10
+Token - 44, String  - =, line no - 10
+Token - 23, String  - "Correct", line no - 10
+Token - 20, String  - variable, line no - 10
+Token - 26, String  - +, line no - 10
+Token - 20, String  - abc, line no - 10
+Token - 26, String  - +, line no - 10
+Token - 21, String  - 7, line no - 10
+Token - 44, String  - =, line no - 10
+Token - 21, String  - 3, line no - 10
+Token - 58, String  - ;, line no - 10
+Token - 2, String  - int, line no - 11
+Token - 20, String  - d, line no - 11
+Token - 52, String  - [, line no - 11
+Token - 21, String  - 5, line no - 11
+Token - 53, String  - ], line no - 11
+Token - 58, String  - ;, line no - 11
+Token - 64, String  - char, line no - 12
+Token - 20, String  - ch, line no - 12
+Token - 58, String  - ;, line no - 12
+Token - 58, String  - ;, line no - 12
+Token - 3, String  - float, line no - 13
+Token - 20, String  - x, line no - 13
+Token - 44, String  - =, line no - 13
+Token - 22, String  - 5.5, line no - 13
+Token - 58, String  - ;, line no - 13
+Token - 4, String  - string, line no - 14
+Token - 20, String  - str, line no - 14
+Token - 44, String  - =, line no - 14
+Token - 23, String  - "names\"", line no - 14
+Token - 58, String  - ;, line no - 14
+Token - 2, String  - int, line no - 18
+Token - 20, String  - a, line no - 18
+Token - 44, String  - =, line no - 18
+Token - 21, String  - 8, line no - 18
+Token - 58, String  - ;, line no - 18
+Token - 51, String  - }, line no - 22
+END OF PROGRAM

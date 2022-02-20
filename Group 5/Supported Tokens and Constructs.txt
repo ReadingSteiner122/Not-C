@@ -1,0 +1,119 @@
+Token List
+• Keywords: int, float, boolean, string, while, until, for, if, else, true, false
+• Operators: +, -, *, /, %, :=, ==, >, <, >=, <=, !=, &&, ||, !, ?, :
+• Delimiters: {, }, (, ), [, ], ;, ,
+• Identifiers: must start with a letter (upper or lower case), and may contain zero or more
+additional characters as long as they are letters, digits, or underscores
+• Integer Literals: may begin with an optional plus or minus followed by a sequence of
+one or more digits, provided that the first digit can only be zero for the number zero
+(which should not have a plus or minus before it). Sign is not determined by lexers.
+• Floating Point Literals: may begin with an optional plus or minus followed by a
+sequence of one or more digits with the same provision above for integers, followed by a
+decimal point and one or more digits after the decimal point. Sign is not determined by lexers.
+• String literals: start and end with a double quote followed by zero or more characters
+that may not be newlines, carriage returns, double quotes, or backslashes. The only
+exceptions are reserved escape sequences which are limited to the following: \t, \n, \r, \",
+and \\.
+
+These tokens are all represented by numbers. The numbers by which they are all represented is given below. 
+Please refer to token_type.cpp
+
+//type keywords
+    TOKEN_NULL, //0
+    TOKEN_BOOL, //1
+    TOKEN_INT, //2
+    TOKEN_FLOAT, //3
+    TOKEN_STRING, //4
+    TOKEN_ARRAY, //5
+    
+    //other keywords
+    TOKEN_KEYWORD, //6
+    TOKEN_PRINT, //7
+    TOKEN_RETURN, //8
+    TOKEN_IF, //9
+    TOKEN_ELSE, //10
+    TOKEN_WHILE, //11
+    TOKEN_FOR, //12
+    TOKEN_BREAK, //13
+    TOKEN_DO, //14
+    TOKEN_CONTINUE, //15
+    TOKEN_IMPORT, //16
+    TOKEN_EXPORT, //17
+    TOKEN_CONST, //18
+    TOKEN_VAR, //19
+    
+    //literals
+    TOKEN_IDENTIFIER, //20
+    TOKEN_INT_LITERAL, //21
+    TOKEN_FLOAT_LITERAL, //22
+    TOKEN_STRING_LITERAL, //23
+    TOKEN_LITERAL_TRUE, //24
+    TOKEN_LITERAL_FALSE, //25
+    
+    //math operators
+    TOKEN_PLUS, //26
+    TOKEN_PLUS_PLUS, //27
+    TOKEN_PLUS_EQUAL, //28
+    
+    TOKEN_MINUS, //29
+    TOKEN_MINUS_MINUS, //30
+    TOKEN_MINUS_EQUAL, //31
+    
+    TOKEN_MULTIPLY, //32
+    TOKEN_MULTIPLY_EQUAL, //33
+    
+    TOKEN_DIVIDE, //34
+    TOKEN_DIVIDE_EQUAL, //35
+    
+    TOKEN_MODULO, //36
+    TOKEN_MODULO_EQUAL, //37
+    
+    //bitwise and logical operators
+    TOKEN_NOT, //38
+    TOKEN_NOT_EQUAL, //39
+    
+    TOKEN_GREATER, //40
+    TOKEN_GREATER_EQUAL, //41
+    
+    TOKEN_LESS, //42
+    TOKEN_LESS_EQUAL, //43
+    
+    TOKEN_EQUAL, //44
+    TOKEN_EQUAL_EQUAL, //45
+    
+    TOKEN_AND, //46
+    TOKEN_AND_AND, //47
+    
+    TOKEN_OR, //48
+    TOKEN_OR_OR, //49
+    
+    //single character tokens
+    TOKEN_LEFT_PAREN, //50
+    TOKEN_RIGHT_PAREN, //51
+    
+    TOKEN_LEFT_SQUARE_BRACKET, //52
+    TOKEN_RIGHT_SQUARE_BRACKET, //53
+    TOKEN_LEFT_BRACE, //54
+    TOKEN_RIGHT_BRACE, //55
+    TOKEN_COMMA, //56
+    TOKEN_DOT, //57
+    TOKEN_SEMICOLON, //58
+    TOKEN_SLASH, //59
+    
+    //meta operators
+    TOKEN_PASS, //60
+    TOKEN_ERROR, //61
+    TOKEN_EOF, //62
+    TOKEN_UNTIL, //63
+    TOKEN_CHAR, //64
+    TOKEN_TERNARY_1, //65
+    TOKEN_TERNARY_2 //66
+
+Our Lexer also supports Error Identification
+Errors Identified
+1. Invalid Identifers - Identifers with unallowed characters in their names (for example - hel$o is an invalid identifer)
+Note: Identifiers that may be obviously invalid to us as users may not be detected by the lexer as it is the job of the syntax and semantic analyser to determine some of those errors. For example, the identifier he+llo is obviously invalid as a variable name but may be valid to the lexer as it considers it variable he plus variable llo.
+Lexers only check for the least restrictive conditions being broken to flag an error
+2. Invalid operators - For example, usage of characters like ` will be flagged as invalid.
+Note 2: Operators may be invalid to us, but the lexer may not flag them as it is the job of the syntax and semantic analyser to describe the rules within which those operators will operate. For example, /+ is clearly invalid - but will be flagged as valid due to the lexer not deciding how the language interprets operator precedence.
+3. Invalid Strings - Un-terminated strings will be treated as invalid and parsing will continue after an error is thrown.

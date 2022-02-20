@@ -1,0 +1,64 @@
+int main(){
+//sequential statements
+int x;
+string str;
+ch = 'a';
+x+=5;
+int y=x/4;
+x++;
+x+=y;
+int a,b;
+a=10;
+printf("Hello, World!")
+printf("x = %d", x);
+
+//expressions
+x = 9/2 + a-b;  
+
+//loop constructs
+for(int i=0;i<5;i++){
+;
+}
+while(a>5){
+a--;
+}
+
+//conditional constructs
+if(x>=5){
+a=5;
+}
+else{
+y=6;
+}
+
+/*
+multi-line comments
+*/
+
+//arrays
+int d[5]={0,0,0,0,0}
+char alphabet[26];
+
+//legal strings
+string str="Hello !@#$%^&*()";
+//illegal strings
+string str_illegal="Hello_but not closed
+
+//valid identifer
+int this_is_valid;
+//invalid identifer
+int thi$_isnt;
+
+printf("%d", funct(a));
+//invalid operators
+```~
+return 0;
+
+}
+
+//function
+int funct(int x){
+int y;
+return (x+y);
+
+}

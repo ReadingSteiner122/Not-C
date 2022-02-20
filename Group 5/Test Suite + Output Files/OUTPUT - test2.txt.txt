@@ -1,0 +1,81 @@
+Please enter the name of the text file with the code you wish parsed:
+test2.txt
+
+
+OUTPUT
+
+
+Token - 2, String  - int, line no - 1
+Token - 20, String  - fact, line no - 1
+Token - 54, String  - (, line no - 1
+Token - 2, String  - int, line no - 1
+Token - 20, String  - n, line no - 1
+Token - 55, String  - ), line no - 1
+Token - 50, String  - {, line no - 1
+Token - 9, String  - if, line no - 2
+Token - 54, String  - (, line no - 2
+Token - 20, String  - n, line no - 2
+Token - 43, String  - <=, line no - 2
+Token - 21, String  - 1, line no - 2
+Token - 55, String  - ), line no - 2
+Token - 8, String  - return, line no - 3
+Token - 21, String  - 1, line no - 3
+Token - 58, String  - ;, line no - 3
+Token - 10, String  - else, line no - 4
+Token - 8, String  - return, line no - 5
+Token - 20, String  - n, line no - 5
+Token - 32, String  - *, line no - 5
+Token - 20, String  - fact, line no - 5
+Token - 54, String  - (, line no - 5
+Token - 20, String  - n, line no - 5
+Token - 29, String  - -, line no - 5
+Token - 21, String  - 1, line no - 5
+Token - 55, String  - ), line no - 5
+Token - 58, String  - ;, line no - 5
+Token - 51, String  - }, line no - 6
+Token - 20, String  - void, line no - 7
+Token - 20, String  - main, line no - 7
+Token - 54, String  - (, line no - 7
+Token - 20, String  - void, line no - 7
+Token - 55, String  - ), line no - 7
+Token - 50, String  - {, line no - 7
+Token - 2, String  - int, line no - 8
+Token - 20, String  - x, line no - 8
+Token - 58, String  - ;, line no - 8
+Token - 20, String  - x, line no - 9
+Token - 44, String  - =, line no - 9
+Token - 21, String  - 1, line no - 9
+Token - 58, String  - ;, line no - 9
+Token - 11, String  - while, line no - 10
+Token - 54, String  - (, line no - 10
+Token - 20, String  - x, line no - 10
+Token - 43, String  - <=, line no - 10
+Token - 21, String  - 10, line no - 10
+Token - 55, String  - ), line no - 10
+Token - 50, String  - {, line no - 10
+Token - 20, String  - write, line no - 11
+Token - 54, String  - (, line no - 11
+Token - 20, String  - x, line no - 11
+Token - 55, String  - ), line no - 11
+Token - 58, String  - ;, line no - 11
+Token - 20, String  - write, line no - 12
+Token - 54, String  - (, line no - 12
+Token - 20, String  - fact, line no - 12
+Token - 54, String  - (, line no - 12
+Token - 20, String  - x, line no - 12
+Token - 55, String  - ), line no - 12
+Token - 55, String  - ), line no - 12
+Token - 58, String  - ;, line no - 12
+Token - 20, String  - writeln, line no - 13
+Token - 54, String  - (, line no - 13
+Token - 55, String  - ), line no - 13
+Token - 58, String  - ;, line no - 13
+Token - 20, String  - x, line no - 14
+Token - 44, String  - =, line no - 14
+Token - 20, String  - x, line no - 14
+Token - 26, String  - +, line no - 14
+Token - 21, String  - 1, line no - 14
+Token - 58, String  - ;, line no - 14
+Token - 51, String  - }, line no - 15
+Token - 51, String  - }, line no - 16
+END OF PROGRAM
