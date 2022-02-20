@@ -24,7 +24,7 @@ class Lexer{
             ch == '<' || ch == '=' || ch == '(' || ch == ')' ||
             ch == '[' || ch == ']' || ch == '{' || ch == '}' ||
             ch == '&' || ch == '|' || ch == '!' || ch == '?' ||
-            ch == ':')
+            ch == ':' || ch == '%')
             {
                 return true;
             }
@@ -43,6 +43,7 @@ class Lexer{
 
     bool isOperator(char ch)							//check if the given character is an operator or not
     {
+        //cout<<ch<<"op"<<endl;
         if (ch == '+' || ch == '-' || ch == '*' ||
             ch == '/' || ch == '>' || ch == '<' ||
             ch == '=' || ch == '|' || ch == '&' ||
@@ -180,6 +181,7 @@ class Lexer{
         int left = 0, right = 0;
         int len = strlen(str);
         while (right <= len && left <= right) {
+            //cout<<str[right]<<endl;
             if((str[right] == '/' && str[right+1] == '*') || multi_com == 1){ //multiline comments
                 multi_com = 1;
                 while(multi_com == 1){
@@ -201,12 +203,24 @@ class Lexer{
             if(str[right] == '\"'){
                 int l1 = right;
                 right++;
-                while(str[right]!='\"' || (str[right]=='\"' && str[right-1]=='\\'))
+                int err_flag = 0;
+                while(str[right]!='\"' || (str[right]=='\"' && str[right-1]=='\\')){
+                    if(right >= strlen(str)){
+                        char *sub = subString(str, l1, right);
+                        tokens.push_back(Token(TOKEN_ERROR, sub, line_no));
+                        //cout<<sub<<endl;
+                        err_flag = 1;
+                        break;
+                    }
                     right++;
-                char* sub = subString(str, l1, right);
-                tokens.push_back(Token(TOKEN_STRING_LITERAL, sub, line_no));
-                right = right + 1;
-                left = right;
+                }
+                if(err_flag == 0){
+                    char* sub = subString(str, l1, right);
+                    tokens.push_back(Token(TOKEN_STRING_LITERAL, sub, line_no));
+                    right = right + 1;
+                    left = right;
+                }else
+                    break;
             }
             if (isPunctuator(str[right]) == false)			//if character is a digit or an alphabet
                 {
@@ -260,6 +274,7 @@ class Lexer{
                         string s1(1, str[right]);
                         string s2(1, str[right+1]);
                         string s = s1 + s2;
+                        cout<<str[right]<<endl;
                     switch(str[right]){
                         case '+':
                             if(str[right+1] == '='){
@@ -467,7 +482,7 @@ class Lexer{
                 //if(isOperator(str[right]))
                 right++;
                 left = right;
-                cout<<str[right]<<endl;
+                //cout<<str[right]<<endl;
                 } 
                 else if (isPunctuator(str[right]) == true && left != right
                     || (right == len && left != right)) 			//check if parsed substring is a keyword or identifier or number
@@ -493,6 +508,7 @@ class Lexer{
                 else if (validIdentifier(sub) == false
                         && isPunctuator(str[right - 1]) == false && (int)sub[0]!=0)
                         {
+                            //cout<<sub<<endl;
                             tokens.push_back(Token(TOKEN_ERROR, sub, line_no));
                             //cout<<"Line no "<< line_no<< ", "<< sub <<" IS NOT A VALID IDENTIFIER\n";
                         }
@@ -512,7 +528,7 @@ class Lexer{
 
 int main()
 {
-    ifstream infile("sample.txt");
+    ifstream infile("edgecases.txt");
     Lexer lex;
     while (infile.good()){
         string sLine;
