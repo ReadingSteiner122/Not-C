@@ -1,3 +1,10 @@
+// Group 5 - Compilers Assignment
+// 2018B4A70713H	Aswath Vinayak K
+// 2018B4A70812H	Sanath Salil
+// 2019A7PS0147H	Sanket Bhatt
+// 2019A7PS0132H	Vaibhav Jha
+
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -60,7 +67,7 @@ class Lexer{
     bool isKeyword(char *str)						//check if the given substring is a keyword or not
     {
         if (!strcmp(str, "if") || !strcmp(str, "else")
-            || !strcmp(str, "while") || !strcmp(str, "until")
+            || !strcmp(str, "while") || !strcmp(str, "until") || !strcmp(str, "for")
             || !strcmp(str, "int") || !strcmp(str, "float")
             || !strcmp(str, "return") || !strcmp(str,"boolean")
             || !strcmp(str, "char") || !strcmp(str, "string")
@@ -74,6 +81,8 @@ class Lexer{
                     tokens.push_back(Token(TOKEN_WHILE, str, line_no));
                 else if(!strcmp(str, "until"))
                     tokens.push_back(Token(TOKEN_UNTIL, str, line_no));
+                else if(!strcmp(str, "for"))
+                    tokens.push_back(Token(TOKEN_FOR, str, line_no));
                 else if(!strcmp(str, "int"))
                     tokens.push_back(Token(TOKEN_INT, str, line_no));
                 else if(!strcmp(str, "float"))
@@ -274,7 +283,7 @@ class Lexer{
                         string s1(1, str[right]);
                         string s2(1, str[right+1]);
                         string s = s1 + s2;
-                        cout<<str[right]<<endl;
+                        //cout<<str[right]<<endl;
                     switch(str[right]){
                         case '+':
                             if(str[right+1] == '='){
@@ -305,7 +314,7 @@ class Lexer{
                                 flag = 1;
                             }
                             /*else{
-                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));                         
+                                tokens.push_back(Token(TOKEN_ERROR, s, line_no));
                                 //std::cout<<"INVALID TOKEN\n";
                                 flag = 0;
                             }*/
@@ -394,7 +403,7 @@ class Lexer{
                                 flag = 0;
                             }*/
                             break;
-                        case '%': 
+                        case '%':
                             if(str[right+1] == '='){
                                 tokens.push_back(Token(TOKEN_MODULO_EQUAL, s, line_no));
                                 //right++;
@@ -483,7 +492,7 @@ class Lexer{
                 right++;
                 left = right;
                 //cout<<str[right]<<endl;
-                } 
+                }
                 else if (isPunctuator(str[right]) == true && left != right
                     || (right == len && left != right)) 			//check if parsed substring is a keyword or identifier or number
                 {
@@ -528,7 +537,11 @@ class Lexer{
 
 int main()
 {
-    ifstream infile("edgecases.txt");
+    string filename;
+    cout << "Please enter the name of the text file with the code you wish parsed: " <<endl;
+    cin >> filename;
+    ifstream infile(filename);
+    cout << "\n\nOUTPUT\n\n"<<endl;
     Lexer lex;
     while (infile.good()){
         string sLine;
@@ -539,6 +552,6 @@ int main()
         lex.parse(line);
     }
     lex.printList();
-    cout<<"ENDLINE"<<endl;
+    cout<<"END OF PROGRAM"<<endl;
     return 0;
 }
