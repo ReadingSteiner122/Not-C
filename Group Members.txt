@@ -8,6 +8,10 @@ Group 5
 Language Name - "~C"
 Lexer Implemented in CPP (C++)
 
-Steps to Compile
-Please compile all 3 .cpp files and link with both .h Header files.
-Please run main.cpp and use a text file either present in the folder of main.cpp or provide the path for the same in the input
+# Not-C
+
+Steps to run the program:
+1. Open the folder where the repository is stored, in terminal
+2. Type g++ main.cpp token.cpp token_type.cpp -o a
+3. Type ./a.exe
+4. Type the name of the text file you wish to parse

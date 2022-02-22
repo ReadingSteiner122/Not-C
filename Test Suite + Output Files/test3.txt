@@ -2,7 +2,7 @@ int main(){
 //sequential statements
 int x;
 string str;
-ch = 'a';
+string ch = "a";
 x+=5;
 int y=x/4;
 x++;
@@ -14,6 +14,15 @@ printf("x = %d", x);
 
 //expressions
 x = 9/2 + a-b;  
+
+//integers
+int y=56;
+int z=1;
+
+//floats;
+float yf=5.666;
+float zf=0.5534;
+
 
 //loop constructs
 for(int i=0;i<5;i++){
@@ -43,6 +52,7 @@ char alphabet[26];
 string str="Hello !@#$%^&*()";
 //illegal strings
 string str_illegal="Hello_but not closed
+string str_il2legal = 'wrong commas'
 
 //valid identifer
 int this_is_valid;
