@@ -1,0 +1,6 @@
+g++ Parser.cc -o parser
+g++ Lexer.cc -o lexer
+lex s_parser.l
+yacc s_parser.l
+gcc y.tab.c -ll -ly -w -o interpreter
+

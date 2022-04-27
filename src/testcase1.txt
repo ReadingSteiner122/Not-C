@@ -1,0 +1,7 @@
+main()
+{
+	int num1,num2; //penis_lord
+	input(num1);
+	input(num2);
+	int val = num1*num2;
+}
