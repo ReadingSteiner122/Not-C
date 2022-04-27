@@ -36,7 +36,7 @@ class parseTable{
         table.push_back(p1);
     }
     void printTable(){
-        for(int i=0; i<128; i++){
+        for(int i=0; i<130; i++){
             cout<<"A ";
             for(int j=0; j<table[i].action.size(); j++)
                 cout<<table[i].action[j]<<" ";
@@ -74,7 +74,7 @@ class parseTable{
                     tc++;
                     continue;
                 }
-                if(j<47){
+                if(j<46){
                     table[i].action.push_back(token);
                     j++;
                 }
@@ -86,6 +86,9 @@ class parseTable{
         i++;
         }
         f1.close();
+    }
+    parseEntry accessParseTable(int i){
+        return table[i];
     }
 };
 

@@ -1,0 +1,66 @@
+S -> func_list int main ( ) { code return 0 ; }
+func_list  -> ‘’
+func_list -> func func_list
+func -> type identifier ( param_list ) { code return identifier ; }
+type -> int
+type -> float
+type -> Boolean
+type -> string
+identifier -> [a-zA-Z]+(a-zA-Z0-9_)*
+integer -> plus_minus [0-9]+
+float_num -> plus_minus [0-9]+.[0-9]+
+bool_vals -> true
+bool_vals -> false
+string_vals -> string_placeholder
+elements -> identifier
+elements -> integer
+elements -> float_num
+elements -> bool_vals
+elements -> string_vals
+param_list -> ‘’
+param_list -> type identifier
+param_list -> type identifier , param_list
+code -> ‘’
+code -> decl_stmt code
+code -> expr_stmt code
+code -> for_loop code
+code -> while_loop code
+code -> if_else stmt code
+code -> comments code
+code -> funct_calls code
+decl_stmt -> type identifier ;
+decl_stmt -> type identifier equals elements ;
+expr_stmt -> identifier equals elements sign rhs ; 
+expr_stmt -> identifier equals elements
+expr_stmt -> identifier unary_operator
+equals -> = 
+equals -> +=
+equals -> -=
+equals -> *=
+equals -> /=
+sign -> + 
+sign -> -
+sign -> *
+sign -> /
+unary_operator -> ++ 
+unary_operator -> --
+unary_operator -> ‘’
+rhs -> elements sign rhs 
+rhs -> elements
+for_loop -> for ( decl_stmt conditional ; expr_stmt ) { code }
+while_loop -> while ( conditional ) { code }
+if_else_stmt -> if ( conditional ) { code }
+if_else_stmt -> if conditional { code } else { code }
+conditional -> rhs conditional_sign rhs
+conditional_sign -> > 
+conditional_sign -> <
+conditional_sign -> >=
+conditional_sign -> <=
+conditional_sign -> ==
+conditional_sign -> !=
+comments -> comments_placeholder
+funct_calls -> identifier equals identifier ( passed_param ) sign rhs ;
+funct_calls -> identifier equals identifier ( passed_param ) ;
+passed_param -> ‘’
+passed_param -> identifier
+passed_param -> identifier , passed_param

@@ -1,0 +1,22 @@
+int main(){
+int c = 5;
+int d = 7; //gg
+//skip line
+int f;
+f+= c + d;
+int k+/6;
+string stringly = "Hi. Empty String
+//above string will give error because it's non-terminated
+string correct ="Correct"variable + abc+7=3;
+int d[5];
+char ch;;
+float x = 5.5;
+string str = "names\"";
+/* multi
+line
+comment*/ 
+int a = 8;
+
+
+
+}

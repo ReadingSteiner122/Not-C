@@ -1,0 +1,42 @@
+++ //plusplus
++- //plusminus
+-+ //minusplus
+-- //minusminus
+
+intrue
+inttrue
+whilelse
+felse
+
+int a, b;
+
+a=a|&b;
+
+""
+"
+"
+"""w
+"\"
+
+=
+>=
+>>
+>
+=>=
+=<=
+<==
+>==
+!==
++=
+-=
+*=
+/=
+%=
+%=
+
+/* orange
+apple orange */
+
+3gfdlk
+gfdg-retr
+trdto@stof
